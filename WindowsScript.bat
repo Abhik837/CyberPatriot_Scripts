@@ -22,16 +22,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	
 :menu
 	cls
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo " _______  ______     ___     __      __     _____   _     _  _______  ______ "
-	echo "[__   __][  ____]   [ _ ]   [  ]    [  ]   [  __ ] [ ]   [ ][__   __][  ____]"
-	echo "   [ ]   [ ]___    [ [_] ]  [ _ ]  [ _ ]   [ ]__] ] [ ]_[ ]    [ ]   [ ]___  "
-	echo "   [ ]   [  ___]  [ _____ ] [ ][ ][ ][ ]   [  __ ]   [   ]     [ ]   [  ___] "
-	echo "   [ ]   [ ]____ [ ]     [ ][ ] [__] [ ]   [ ]__] ]   [ ]      [ ]   [ ]____ "
-	echo "   [_]   [______][_]     [_][_]      [_]   [_____]    [_]      [_]   [______]"
-	echo "                                                                             " 
-	echo "~~~~~~~~~~~~~~~~~~~~~Written by: Ethan Fowler Team-ByTE~~~~~~~~~~~~~~~~~~~~~~"
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo "1)Set user properties		2)Create a user"
 	echo "3)Disable a user		4)Change all passwords"
 	echo "5)Disable guest/admin		6)Set password policy
@@ -82,7 +73,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	for /F "tokens=2* delims==" %%G in ('
 		wmic UserAccount where "status='ok'" get name >null
 	') do for %%g in (%%~G) do (
-		net user %%~g Cyb3rPatr!0t$
+		net user %%~g CyberPatriot2024$
 		)
 	endlocal
 	setlocal enabledelayedexpansion	
@@ -137,7 +128,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 		goto :menu
 	)
 	if %errorlevel%==1 (
-		net user administrator Cyb3rPatr!0t$ /active:no
+		net user administrator CyberPatriot2024$ /active:no
 		pause
 		goto :menu
 	)
@@ -146,10 +137,10 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	rem Sets the password policy
 	rem Set complexity requirments
 	echo Setting pasword policies
-	net accounts /minpwlen:8
+	net accounts /minpwlen:12
 	net accounts /maxpwage:60
 	net accounts /minpwage:10
-	net accounts /uniquepw:3
+	net accounts /uniquepw:5
 	
 	pause
 	goto :menu
@@ -158,7 +149,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	rem Sets the lockout policy
 	echo Setting the lockout policy
 	net accounts /lockoutduration:30
-	net accounts /lockoutthreshold:3
+	net accounts /lockoutthreshold:5
 	net accounts /lockoutwindow:30
 
 	pause
@@ -356,7 +347,7 @@ set /p answer=Have you answered all the forensics questions?[y/n]:
 	goto :menu
 	
 :audit
-	echo Auditing the maching now
+	echo Auditing the machine now
 	auditpol /set /category:* /success:enable
 	auditpol /set /category:* /failure:enable
 	
