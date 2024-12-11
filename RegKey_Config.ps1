@@ -32,24 +32,58 @@ Function Set-RegistryKey {
 }
 
 # Registry Configurations
-Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 1  # Disable Remote Desktop
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Value 0  # Enable Automatic Updates
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AutoInstallMinorUpdates" -Value 1  # Enable Auto Install Minor Updates
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AUOptions" -Value 4  # Configure Automatic Updates
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "ScanWithAntiVirus" -Value 3  # Scan Attachments with Antivirus
-Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "ClearPageFileAtShutdown" -Value 1  # Clear Page File at Shutdown
-Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "RunAsPPL" -Value 1  # Enable LSA Protection
-Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters" -Name "DisablePasswordChange" -Value 0  # Enable Machine Account Password Changes
-Set-RegistryKey -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1  # Show Hidden Files
-Set-RegistryKey -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSuperHidden" -Value 1  # Show Super Hidden Files
-Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" -Name "RequireSecuritySignature" -Value 1  # Require SMB Security Signatures
-Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" -Name "EnableSecuritySignature" -Value 1  # Enable SMB Security Signatures
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoDriveTypeAutoRun" -Value 255  # Disable Autoruns
-Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl" -Name "CrashDumpEnabled" -Value 0  # Disable Dump File Creation
-Set-RegistryKey -Path "HKCU:\Control Panel\Desktop" -Name "ScreenSaveTimeOut" -Value 2700  # Set Idle Time to 45 Minutes
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription" -Name "EnableTranscripting" -Value 1  # Enable PowerShell Transcription
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging" -Name "EnableScriptBlockLogging" -Value 1  # Enable Script Block Logging
-Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging" -Name "EnableModuleLogging" -Value 1  # Enable Module Logging
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AutoInstallMinorUpdates" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AUOptions" -Value 4
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" -Name "AUOptions" -Value 4
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "DisableWindowsUpdateAccess" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "ElevateNonAdmins" -Value 0
+Set-RegistryKey -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoWindowsUpdate" -Value 0
+Set-RegistryKey -Path "HKLM:\SYSTEM\Internet Communication Management\Internet Communication" -Name "DisableWindowsUpdateAccess" -Value 0
+Set-RegistryKey -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\WindowsUpdate" -Name "DisableWindowsUpdateAccess" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableAntiSpyware" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "ServiceKeepAlive" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Name "DisableIOAVProtection" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Name "DisableRealtimeMonitoring" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Scan" -Name "CheckForSignaturesBeforeRunningScan" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Scan" -Name "DisableHeuristics" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "ScanWithAntiVirus" -Value 3
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "AutoAdminLogon" -Value 0
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation" -Name "AllowInsecureGuestAuth" -Value 0
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\services\LanmanWorkstation\Parameters" -Name "EnablePlainTextPassword" -Value 0
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "RunAsPPL" -Value 1
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "everyoneincludesanonymous" -Value 0
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "disabledomaincreds" -Value 1
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "restrictanonymous" -Value 1
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "restrictanonymoussam" -Value 1
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "LimitBlankPasswordUse" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableLUA" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "PromptOnSecureDesktop" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableInstallerDetection" -Value 1
+Set-RegistryKey -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+Set-RegistryKey -Path "HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl" -Name "CrashDumpEnabled" -Value 0
+Set-RegistryKey -Path "HKCU:\SYSTEM\CurrentControlSet\Services\CDROM" -Name "AutoRun" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoAutorun" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoDriveTypeAutoRun" -Value 255
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\access\security" -Name "vbawarnings" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\excel\security" -Name "vbawarnings" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\excel\security" -Name "blockcontentexecutionfrominternet" -Value 1
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\excel\security" -Name "excelbypassencryptedmacroscan" -Value 0
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\ms project\security" -Name "vbawarnings" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\ms project\security" -Name "level" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\outlook\security" -Name "level" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\powerpoint\security" -Name "vbawarnings" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\powerpoint\security" -Name "blockcontentexecutionfrominternet" -Value 1
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\publisher\security" -Name "vbawarnings" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\visio\security" -Name "vbawarnings" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\visio\security" -Name "blockcontentexecutionfrominternet" -Value 1
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\word\security" -Name "vbawarnings" -Value 4
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\word\security" -Name "blockcontentexecutionfrominternet" -Value 1
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\16.0\word\security" -Name "wordbypassencryptedmacroscan" -Value 0
+Set-RegistryKey -Path "HKCU:\Software\Policies\Microsoft\office\common\security" -Name "automationsecurity" -Value 3
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription" -Name "EnableTranscripting" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging" -Name "EnableScriptBlockLogging" -Value 1
+Set-RegistryKey -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging" -Name "EnableModuleLogging" -Value 1
 
 # Finalize
 Write-Log "CyberPatriot Security Configuration Completed."
