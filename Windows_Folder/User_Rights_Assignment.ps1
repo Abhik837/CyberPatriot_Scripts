@@ -7,11 +7,10 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 }
 
 # Define log file path on the user's Desktop
-$desktopPath = [Environment]::GetFolderPath('Desktop')
-$logFilePath = Join-Path -Path $desktopPath -ChildPath "User_Rights_Assignment_Log.txt"
+$LogFile = "$env:USERPROFILE\Desktop\User_Rights_Assignment_Log.txt"
 
 # Initialize the log file
-"Script started on $(Get-Date)" | Out-File -FilePath $logFilePath -Append
+"Script started on $(Get-Date)" | Out-File -FilePath $LogFile -Append
 
 # Function to modify user rights
 function Set-UserRight {
@@ -37,9 +36,9 @@ function Set-UserRight {
         $content | Set-Content "$env:TEMP\secedit_update.inf"
         secedit /configure /db $env:TEMP\secedit.sdb /cfg $env:TEMP\secedit_update.inf /areas USER_RIGHTS > $null
 
-        "Successfully set privilege '$Privilege' for accounts: $accountsList" | Out-File -FilePath $logFilePath -Append
+        "Successfully set privilege '$Privilege' for accounts: $accountsList" | Out-File -FilePath $LogFile -Append
     } catch {
-        "Failed to set privilege '$Privilege' for accounts: $Accounts. Error: $_" | Out-File -FilePath $logFilePath -Append
+        "Failed to set privilege '$Privilege' for accounts: $Accounts. Error: $_" | Out-File -FilePath $LogFile -Append
     }
 }
 
@@ -91,5 +90,5 @@ foreach ($privilege in $userRights.Keys) {
     Set-UserRight -Privilege $privilege -Accounts $userRights[$privilege]
 }
 
-"Script completed on $(Get-Date)" | Out-File -FilePath $logFilePath -Append
-Write-Host "Script execution completed. Logs saved to $logFilePath"
+"Script completed on $(Get-Date)" | Out-File -FilePath $LogFile -Append
+Write-Host "Script execution completed. Logs saved to $LogFile"
