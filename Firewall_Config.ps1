@@ -4,7 +4,7 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     exit
 }
 
-$LogFile = "$env:USERPROFILE\Desktop\Firewall_Config.txt"
+$LogFile = "$env:USERPROFILE\Desktop\Firewall_Config_Log.txt"
 
 Write-Host "Configuring firewall rules..." -ForegroundColor Gray
     try {
