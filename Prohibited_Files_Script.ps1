@@ -1,5 +1,5 @@
 # Define file types to search and keywords
-$prohibitedExtensions = @("*.mp3", "*.mp4")
+$prohibitedExtensions = @("*.mp3", "*.mp4", "*.jpg", "*.jpeg", "*.png", "*.gif", "*.mov", "*.avi")
 $prohibitedKeywords = @("hacker", "tool")
 $reportPath = "C:\ProhibitedFilesReport.txt"
 
