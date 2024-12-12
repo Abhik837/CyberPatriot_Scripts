@@ -1,3 +1,11 @@
+# Ensure the script is run with administrative privileges
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Error "Run this script as an administrator!"
+    exit
+}
+
+$LogFile = "$env:USERPROFILE\Desktop\Firewall_Config.txt"
+
 Write-Host "Configuring firewall rules..." -ForegroundColor Gray
     try {
         netsh advfirewall firewall add rule name="Block appvlp.exe netconns" program="C:\Program Files (x86)\Microsoft Office\root\client\AppVLP.exe" protocol=tcp dir=out enable=yes action=block profile=any
@@ -55,6 +63,6 @@ Write-Host "Configuring firewall rules..." -ForegroundColor Gray
         netsh advfirewall firewall add rule name="Block wscript.exe netconns" program="%systemroot%\SysWOW64\wscript.exe" protocol=tcp dir=out enable=yes action=block profile=any
     }
     catch {
-        Write-Output "$Error[0] $_" | Out-File "C:\Program Files\ezScript\hostFirewall.txt"
+        Write-Output "$Error[0] $_" | Out-File $LogFile
         Write-host "Writing error to file" -ForegroundColor DarkYellow
     }
