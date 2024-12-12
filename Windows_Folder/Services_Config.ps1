@@ -8,7 +8,7 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 # Define log file path on the user's Desktop
 $desktopPath = [Environment]::GetFolderPath('Desktop')
-$LogFile = "$env:USERPROFILE\Desktop\Services_Config.txt"
+$LogFile = "$env:USERPROFILE\Desktop\Services_Config_Log.txt"
 
 # Initialize the log file
 "Script started on $(Get-Date)" | Out-File -FilePath $LogFile -Append
