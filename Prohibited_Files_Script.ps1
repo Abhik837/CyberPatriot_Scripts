@@ -7,7 +7,7 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 # Define file types to search and keywords
 $prohibitedExtensions = @("*.mp3", "*.mp4", "*.jpg", "*.jpeg", "*.png", "*.gif", "*.mov", "*.avi")
 $prohibitedKeywords = @("hacker", "tool")
-$reportPath = "$env:USERPROFILE\Desktop\RegKey_Config_Log.txt"
+$reportPath = "$env:USERPROFILE\Desktop\Prohibited_Files_Log.txt"
 
 # Start logging
 "Prohibited Files Report - Generated on $(Get-Date)" | Out-File -FilePath $reportPath
