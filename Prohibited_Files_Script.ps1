@@ -1,7 +1,13 @@
+# Ensure the script is run with administrative privileges
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Error "Run this script as an administrator!"
+    exit
+}
+
 # Define file types to search and keywords
 $prohibitedExtensions = @("*.mp3", "*.mp4", "*.jpg", "*.jpeg", "*.png", "*.gif", "*.mov", "*.avi")
 $prohibitedKeywords = @("hacker", "tool")
-$reportPath = "C:\ProhibitedFilesReport.txt"
+$reportPath = "$env:USERPROFILE\Desktop\RegKey_Config_Log.txt"
 
 # Start logging
 "Prohibited Files Report - Generated on $(Get-Date)" | Out-File -FilePath $reportPath
